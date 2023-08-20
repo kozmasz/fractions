@@ -1,0 +1,1 @@
+Operator = Struct.new(:precedence, :name, :ruby_operator)
