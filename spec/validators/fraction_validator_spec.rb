@@ -1,13 +1,16 @@
+# frozen_string_literal: true
+
 require 'active_model'
 require_relative '../../app/validators/fraction_validator'
 
-RSpec.describe FractionValidator do
-  class FractionModel
-    include ActiveModel::Validations
-    attr_accessor :fraction
-    validates :fraction, fraction: true
-  end
+class FractionModel
+  include ActiveModel::Validations
+  attr_accessor :fraction
 
+  validates :fraction, fraction: true
+end
+
+RSpec.describe FractionValidator do
   let(:model) { FractionModel.new }
 
   context 'with valid fractions' do

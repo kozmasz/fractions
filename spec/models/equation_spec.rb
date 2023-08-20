@@ -1,7 +1,8 @@
+# frozen_string_literal: true
+
 require_relative '../../app/models/equation'
 
 RSpec.describe Equation do
-
   let(:equation) { Equation.new('1/2 + 3&1/4') }
 
   describe 'initialization' do

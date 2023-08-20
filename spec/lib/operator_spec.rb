@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative '../../lib/operator' # Adjust the path to the 'rational' file accordingly
 
 RSpec.describe Operator do

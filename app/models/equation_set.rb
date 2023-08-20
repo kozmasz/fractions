@@ -1,16 +1,19 @@
+# frozen_string_literal: true
+
 require 'active_model'
 require_relative '../validators/equation_set_validator'
 require_relative '../../lib/operator'
 require_relative 'fraction'
 
+# This class represents a mathematical equation.
 class EquationSet < Array
   include ActiveModel::Validations
 
   OPERATORS = {
-    "+" => Operator.new(1, "ADD", :+),
-    "-" => Operator.new(1, "SUB", :-),
-    "*" => Operator.new(2, "MUL", :*),
-    "/" => Operator.new(2, "DIV", :/)
+    '+' => Operator.new(1, 'ADD', :+),
+    '-' => Operator.new(1, 'SUB', :-),
+    '*' => Operator.new(2, 'MUL', :*),
+    '/' => Operator.new(2, 'DIV', :/)
   }.freeze
 
   validates_with EquationSetValidator

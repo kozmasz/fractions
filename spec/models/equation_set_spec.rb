@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative '../../app/models/equation_set'
 
 RSpec.describe EquationSet do
