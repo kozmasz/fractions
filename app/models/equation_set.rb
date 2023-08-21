@@ -29,25 +29,7 @@ class EquationSet < Array
     end
   end
 
-  # Reverse Polish Notation
   # rubocop:disable Metrics/MethodLength
-  def to_rpn
-    output_queue = []
-    operator_stack = []
-
-    each do |element|
-      if element.is_a?(Fraction)
-        output_queue << element
-      elsif element.is_a?(Operator)
-        while operator_stack.any? && operator_stack.last.precedence >= element.precedence
-          output_queue << operator_stack.pop
-        end
-        operator_stack << element
-      end
-    end
-
-    output_queue + operator_stack.reverse
-  end
 
   def solve
     operand_stack = []
@@ -64,6 +46,27 @@ class EquationSet < Array
     end
 
     operand_stack.pop
+  end
+
+  private
+
+  # Reverse Polish Notation
+  def to_rpn
+    output_queue = []
+    operator_stack = []
+
+    each do |element|
+      if element.is_a?(Fraction)
+        output_queue << element
+      elsif element.is_a?(Operator)
+        while operator_stack.any? && operator_stack.last.precedence >= element.precedence
+          output_queue << operator_stack.pop
+        end
+        operator_stack << element
+      end
+    end
+
+    output_queue + operator_stack.reverse
   end
   # rubocop:enable Metrics/MethodLength
 end

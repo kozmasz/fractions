@@ -22,4 +22,14 @@ RSpec.describe EquationSet do
       expect(equation_set).not_to be_valid
     end
   end
+
+  describe '#solve' do
+    let(:valid_input) { '1 + -3&1/3 * -2 - 5/3 / -3/7 + 7&1/2' }
+    let(:equation_set) { EquationSet.new(valid_input) }
+
+    it 'solves the equation' do
+      result = equation_set.solve
+      expect(result.value).to eq(Fraction.new('19&1/18').value)
+    end
+  end
 end

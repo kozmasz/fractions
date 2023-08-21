@@ -19,3 +19,5 @@ loop do
     puts "= #{equation_set.solve}"
   end
 end
+
+puts 'Bye!'
