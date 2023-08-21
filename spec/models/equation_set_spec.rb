@@ -5,13 +5,13 @@ require_relative '../../app/models/equation_set'
 RSpec.describe EquationSet do
   describe 'initialization' do
     it 'creates an EquationSet instance with valid elements' do
-      equation_set = EquationSet.new('1/2', '+', '3&1/4')
+      equation_set = EquationSet.new('1/2 + 3&1/4')
       expect(equation_set).to be_a(EquationSet)
     end
   end
 
   describe 'validation' do
-    let(:equation_set) { EquationSet.new('1/2', '+', '3&1/4') }
+    let(:equation_set) { EquationSet.new('1/2 + 3&1/4') }
 
     it 'is valid with valid elements' do
       expect(equation_set).to be_valid

@@ -16,11 +16,15 @@ class EquationSet < Array
     '/' => Operator.new(2, 'DIV', :/)
   }.freeze
 
+  attr_reader :input
+
   validates_with EquationSetValidator
 
-  def initialize(*args)
+  def initialize(input = "")
     super()
-    args.each.with_index(1) do |element, index|
+    @input = input
+    splitted_input = (input || "").split(/\s+/)
+    splitted_input.each.with_index(1) do |element, index|
       push(index.odd? ? Fraction.new(element) : OPERATORS[element] || element)
     end
   end
