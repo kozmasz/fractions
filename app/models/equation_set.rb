@@ -20,16 +20,17 @@ class EquationSet < Array
 
   validates_with EquationSetValidator
 
-  def initialize(input = "")
+  def initialize(input = '')
     super()
     @input = input
-    splitted_input = (input || "").split(/\s+/)
+    splitted_input = (input || '').split(/\s+/)
     splitted_input.each.with_index(1) do |element, index|
       push(index.odd? ? Fraction.new(element) : OPERATORS[element] || element)
     end
   end
 
   # Reverse Polish Notation
+  # rubocop:disable Metrics/MethodLength
   def to_rpn
     output_queue = []
     operator_stack = []
@@ -57,7 +58,6 @@ class EquationSet < Array
       elsif element.is_a?(Operator)
         right_operand = operand_stack.pop
         left_operand = operand_stack.pop
-
         result = left_operand.value.send(element.ruby_operator, right_operand.value).to_fraction
         operand_stack.push(result)
       end
@@ -65,4 +65,5 @@ class EquationSet < Array
 
     operand_stack.pop
   end
+  # rubocop:enable Metrics/MethodLength
 end

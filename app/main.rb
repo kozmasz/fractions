@@ -1,12 +1,14 @@
+# frozen_string_literal: true
+
 require 'readline'
 require_relative 'models/equation_set'
 
 command_history = []
 
 loop do
-  command = Readline.readline("? ", true)
+  command = Readline.readline('? ', true)
 
-  break if command.downcase.strip == "exit"
+  break if command.downcase.strip == 'exit'
 
   command_history << command
   equation_set = EquationSet.new(command)

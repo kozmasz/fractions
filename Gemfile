@@ -3,6 +3,6 @@
 source 'https://rubygems.org'
 
 gem 'activemodel'
+gem 'readline'
 gem 'rspec'
 gem 'rubocop'
-gem 'readline'

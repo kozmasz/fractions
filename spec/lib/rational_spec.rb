@@ -38,7 +38,7 @@ RSpec.describe Rational do
   end
 
   describe '.to_fraction' do
-    let(:rational) { "7/3".to_r }
+    let(:rational) { '7/3'.to_r }
     let(:fraction) { rational.to_fraction }
 
     it 'converts a rational number to a Fraction' do
