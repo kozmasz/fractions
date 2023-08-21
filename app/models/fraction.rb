@@ -10,10 +10,23 @@ class Fraction
 
   attr_accessor :expression, :value
 
-  def initialize(string)
-    @expression = string
-    @value = Rational.from(string)
+  def initialize(object)
+    @expression = object.to_s
+    @value = Rational.from(@expression)
   end
 
   validates :expression, presence: true, fraction: true
+
+  def to_s
+    whole = value.to_i
+    fraction = value - whole
+
+    if fraction.zero?
+      whole.to_s
+    elsif whole.zero?
+      "#{fraction.numerator}/#{fraction.denominator}"
+    else
+      "#{whole}&#{fraction.abs}"
+    end
+  end
 end

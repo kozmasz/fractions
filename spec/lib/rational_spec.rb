@@ -36,4 +36,14 @@ RSpec.describe Rational do
       end
     end
   end
+
+  describe '.to_fraction' do
+    let(:rational) { "7/3".to_r }
+    let(:fraction) { rational.to_fraction }
+
+    it 'converts a rational number to a Fraction' do
+      expect(fraction).to be_instance_of(Fraction)
+      expect(fraction.value).to eq(rational)
+    end
+  end
 end
